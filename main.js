@@ -50,6 +50,7 @@ function addTask() {
   allToggleButton();
   render();
   taskInput.value = "";
+  addButton.disabled = true;
 }
 
 function uniqueIdGenerator() {
