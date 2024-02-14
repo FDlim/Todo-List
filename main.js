@@ -21,6 +21,23 @@ addButton.addEventListener("click", addTask);
 notDoneButton.addEventListener("click", notDoneToggleButton);
 allButton.addEventListener("click", allToggleButton);
 doneButton.addEventListener("click", doneToggleButton);
+taskInput.addEventListener("keypress", function (event) {
+  if (event.keyCode === 13 && !addButton.disabled) {
+    addTask();
+  }
+});
+taskInput.addEventListener("input", function () {
+  if (taskInput.value.trim() !== "") {
+    addButton.disabled = false;
+  } else {
+    // 값이 없을 경우 버튼을 비활성화합니다.
+    addButton.disabled = true;
+  }
+});
+
+function test() {
+  console.log("포커스됨");
+}
 
 function addTask() {
   let task = {
@@ -32,6 +49,7 @@ function addTask() {
   console.log(taskList);
   allToggleButton();
   render();
+  taskInput.value = "";
 }
 
 function uniqueIdGenerator() {
